@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 
 const Products = () => {
-
+  const [ toggle,setToggle]=useState(false)
    const [category, setCategory]=useState([])
    const[searchProduct,setSearchProduct]=useState("")
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const Products = () => {
 
   }, []);
 
-  console.log(searchProduct)
+  console.log(toggle)
   const products = useSelector((state) => state.products);
  
   return (
@@ -72,16 +72,18 @@ const Products = () => {
       <div className="conteiner-products">
        <div className="btn">
          <input  onChange={( e) => {setSearchProduct (e.target.value)}}   value={searchProduct} className="input-product" type="text"  placeholder="waht are you looking for" />
-        <button onClick={()=>dispatch(nameProductsThumk(searchProduct))}>s</button>
+        <button onClick={()=>dispatch(nameProductsThumk(searchProduct))}> search</button>
        </div>
           <ul className="products-card" >
           {products.map((product) => (
         
           
           <li key={product.id} className="conteiner-img">
-            <Link to={`/products/${product.id}`} className="conten-img">
+            <Link to={`/products/${product.id}`} className="conten-img" > 
+              {/* onMouseOver={()=>setToggle(true)} onMouseOut={()=>setToggle(false)} */}
               
-             <img  src={product?.productImgs[0]} alt="" />
+             <img className="img-p " src={product?.productImgs[0]} alt=""    />
+             {/* <img className={toggle?"none-opacity": "img-p opacity"} src={product?.productImgs[1]} alt="" /> */}
              </Link>
             <div className="info">
             <strong>{product.title}</strong> <br />

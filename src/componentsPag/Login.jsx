@@ -3,13 +3,25 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-   
+const navigate=useNavigate();
 const {register, handleSubmit}=useForm();
- const submit=()=>{
-  //  axios.post("https://e-commerce-api.academlo.tech/api/v1/users/login",data)
-  //  .then(res => console.log(res))
+ const submit=(data)=>{
+   axios.post("https://e-commerce-api.academlo.tech/api/v1/users/login", data)
+  .then(res => {navigate("/")
+      console.log(res)
+       localStorage.setItem("token", res.data.data.token)
+       })
+  .catch(error => {
+    if(error.response?.status===404){
+      alert("credenciales incorrrectas")
+    }else{
+      console.log(console.response?.data)
+    }
+  })
+         
  }
 
   return (

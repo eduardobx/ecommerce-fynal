@@ -193,10 +193,21 @@ button{
 .conten-img{
   height: 65%;
   width: 100%;
-  border-bottom: 2px solid var(--light-gray)
+  border-bottom: 2px solid var(--light-gray);
+  position: relative;
+}
+.opacity{
+  position: absolute;
+  top: 0;
+  right: 36px;
+  
+}
+.none-opacity{
+  opacity: 0;
 }
 
-.conten-img> img{
+
+.img-p{
   display: block;
   height: 85%;
   margin:  auto;
@@ -247,3 +258,86 @@ button{
   cursor: pointer;
 }
 
+.conteiner-purchases{
+  width: 100%;
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+}
+
+.conteiner-purchases>div{
+    width: 70%;
+    padding: 20px;
+    padding-left: 40px;
+}
+
+.pucharses-options{
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+.pucharses-options h3{
+  cursor: pointer;
+  list-style: none;
+  text-decoration: none;
+}
+.pucharses-options h3:hover{
+    color: #f85555;
+}
+.color-tilte{
+  color: #f85555;
+}
+.conteiner-purchases p{
+  padding-top: 5px;
+}
+.purchases-item{
+  border: 1px solid var(--text-gray);
+  border-radius: 10px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  background-color: #dcd9d9;
+  padding-bottom: 40px;
+  display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+.my{
+  margin-bottom: 30px;
+}
+.purchases-item >p {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid var(--text-gray);
+  
+}
+
+li{
+  list-style: none;
+ text-decoration: none;
+ outline: none;
+}
+.purchases-producut{
+  width: 95%;
+  padding-left: 20px;
+  padding-top: 15px;
+ border-bottom: 1px solid var(--text-gray);
+ padding-bottom: 30px;
+ position: relative;
+}
+.quantity{
+  position: absolute;
+  right: 50px;
+  bottom:  20px;
+  width: 80px;
+  height: 60px;
+  border: 1px solid var(--text-gray);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+
+   

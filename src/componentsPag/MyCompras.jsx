@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 import { getPurchassesThunk } from "../store/slices/purchases.slice";
 
 const MyCompras = () => {
@@ -47,6 +48,7 @@ const MyCompras = () => {
           ))}
         </ul>
       </div>
+       <Footer/> 
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { filterCategorisThumk, getproductsThunk, nameProductsThumk } from "../st
 import Accordion from "react-bootstrap/Accordion";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 
 
@@ -59,7 +60,7 @@ const Products = () => {
                    <ListGroup.Item as="li">{category.map(name =>(
                    <p  className="categorys-buton"onClick={()=>dispatch(filterCategorisThumk(name.id))}key={name.name}> {name.name}</p>
                    ))}
-                     <button onClick={()=> dispatch(getproductsThunk())}>all</button>
+                     <button  className="btn2" onClick={()=> dispatch(getproductsThunk())}>all</button>
                    </ListGroup.Item>
                 
                 </ListGroup>
@@ -68,11 +69,10 @@ const Products = () => {
           </Accordion>
         </div>
       </div>
-
       <div className="conteiner-products">
        <div className="btn">
          <input  onChange={( e) => {setSearchProduct (e.target.value)}}   value={searchProduct} className="input-product" type="text"  placeholder="waht are you looking for" />
-        <button onClick={()=>dispatch(nameProductsThumk(searchProduct))}> search</button>
+        <button className="btn2" onClick={()=>dispatch(nameProductsThumk(searchProduct))}> search</button>
        </div>
           <ul className="products-card" >
           {products.map((product) => (
@@ -97,6 +97,7 @@ const Products = () => {
          </ul>
       
       </div>
+     
     </div>
   );
 };

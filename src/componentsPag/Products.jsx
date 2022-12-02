@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterCategorisThumk, getproductsThunk, nameProductsThumk } from "../store/slices/prodcuts.slice";
 import Accordion from "react-bootstrap/Accordion";
 import ListGroup from "react-bootstrap/ListGroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+import CartSidebar from "../components/CartSidebar";
 
 
 
@@ -15,6 +16,16 @@ const Products = () => {
    const [category, setCategory]=useState([])
    const[searchProduct,setSearchProduct]=useState("")
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const token=localStorage.getItem("token")
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const navigate=useNavigate();
+
+  const toLogin=()=>{
+     return  navigate("/login")
+  }
+
   useEffect(() => {
     dispatch(getproductsThunk());
     
@@ -26,7 +37,7 @@ const Products = () => {
 
   console.log(toggle)
   const products = useSelector((state) => state.products);
- 
+  
   return (
     <div className="conteniner-options">
       <div className="span"></div>
@@ -89,7 +100,12 @@ const Products = () => {
             <strong>{product.title}</strong> <br />
             <span>Price</span> <br />
             <span>$ {product.price}</span>
+            
             </div>
+            <button className="icons" onClick={handleShow}>
+            <i class="fa-solid fa-shop"></i>
+            
+            </button>
           </li>
           
        
@@ -97,7 +113,7 @@ const Products = () => {
          </ul>
       
       </div>
-     
+      {  token ? <CartSidebar  show={show} handleClose={handleClose}/> :  toLogin()  } 
     </div>
   );
 };

@@ -12,10 +12,7 @@ const CartSidebar = ({ handleClose, show }) => {
   useEffect(() => {
     dispatch(getCartThunk());
   }, []);
-  console.log(cartProducts)
-  // const deletCart=()=>{
-  //    dispatch(getDeletCartThunk(index.categoryId      ))
-  // }
+
   return (
     <div>
       <Offcanvas show={show} onHide={handleClose}>
@@ -35,7 +32,7 @@ const CartSidebar = ({ handleClose, show }) => {
                     <div className="border-cant">{index.productsInCart.quantity}</div>
                   </div> 
                    
-                  <button onClick={()=>dispatch(getDeletCartThunk(index.id ))} className="btn4">delet</button>
+                  <button onClick={()=>dispatch(getDeletCartThunk(index.id ))} className="btn4"><i class="fa-regular fa-trash-can"></i></button>
                 </section>
                 <div className="total">
                   <span>total     : </span>

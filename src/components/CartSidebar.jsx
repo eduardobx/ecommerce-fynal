@@ -35,7 +35,7 @@ const CartSidebar = ({ handleClose, show }) => {
                     <div className="border-cant">{index.productsInCart.quantity}</div>
                   </div> 
                    
-                  <button onClick={()=>dispatch(getDeletCartThunk(index.userId ))} className="btn4">delet</button>
+                  <button onClick={()=>dispatch(getDeletCartThunk(index.id ))} className="btn4">delet</button>
                 </section>
                 <div className="total">
                   <span>total     : </span>

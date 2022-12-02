@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getCartThunk } from "../store/slices/cartProducts.slice";
+import { getCartThunk, getCheckoutCartThunk, getDeletCartThunk } from "../store/slices/cartProducts.slice";
 
 const CartSidebar = ({ handleClose, show }) => {
   const dispatch = useDispatch();
@@ -12,7 +12,10 @@ const CartSidebar = ({ handleClose, show }) => {
   useEffect(() => {
     dispatch(getCartThunk());
   }, []);
-
+  console.log(cartProducts)
+  // const deletCart=()=>{
+  //    dispatch(getDeletCartThunk(index.categoryId      ))
+  // }
   return (
     <div>
       <Offcanvas show={show} onHide={handleClose}>
@@ -29,27 +32,29 @@ const CartSidebar = ({ handleClose, show }) => {
                   <div className="conteiner-to">
                     <span>{index.brand}</span>
                     <Link to={`/products/${index.id}`}> {index.title}</Link>
-                    <div className="border-cant">6</div>
+                    <div className="border-cant">{index.productsInCart.quantity}</div>
                   </div> 
                    
-                  <button className="btn4">delet</button>
+                  <button onClick={()=>dispatch(getDeletCartThunk(index.userId ))} className="btn4">delet</button>
                 </section>
                 <div className="total">
                   <span>total     : </span>
-                  <b>$  192939</b>
+                  <b>{index.productsInCart.quantity*index.price}</b>
                 </div>
                
               </li>
             ))}
-          </ul>
-               <div className="potion-fixet">
 
-              <h4> <b> total</b> : 123212</h4>
-                <button class="add-cart-button">
+           < div className="potion-fixet">
+
+              <h4> <b> total</b> </h4>
+                <button className="add-cart-button" onClick={()=> dispatch (getCheckoutCartThunk())} >
                     Add to cart 
                      </button>
                 </div>
 
+          </ul>
+               
         </Offcanvas.Body>
       </Offcanvas>
     </div>

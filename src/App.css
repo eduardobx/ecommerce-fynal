@@ -236,7 +236,7 @@ margin-left: 70px;
 
 .form-login{
    width: 30%;
-   height: 60%;
+   height: 70%;
    padding: 20px;
    border: 2px solid var(--light-gray);
    border-radius: 10px;
@@ -405,19 +405,7 @@ li{
   gap: 10px;
  
 }
-.min-max{
-  width: 60px;
-  cursor: pointer;
-    border: solid #c7c7c7 1px;
-    color: #fff;
-    line-height: 1;
-    padding-top: 8px;
-    border-radius: 10px;
-}
-.min-max:hover{
-  background-color: #f85555;
- 
-}
+
 .add-cart-button {
   background: var(--primary);
   color: #fff;
@@ -479,16 +467,18 @@ margin-bottom: 10px;
 
 
 .potion-fixet{
-  position: fixed;
-  width: 27%;
+ 
+  width: 100%;
   left: 0;
   bottom: -2px;
-  padding-left: 30px;
+ 
+ 
 }
 
 .potion-fixet h4{
   width: 100%;
-  text-align: center;
+  text-align: end;
+  font-size: 19px;
 }
 
 footer {

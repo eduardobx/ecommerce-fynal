@@ -38,7 +38,7 @@ const MyCompras = () => {
                          <ul><li> preci: $ {index.price}</li>
                          <li> time : {index.updatedAt}</li></ul>
                           <p className="quantity">{index.productsInCart?.quantity}</p>
-                           {console.log(index.productsInCArt?.quantity)}
+                         
                       </li>
                     
                   </Link>

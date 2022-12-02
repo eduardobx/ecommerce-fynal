@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import {  getToCartThunk } from "../store/slices/cartProducts.slice";
 import { getproductsThunk } from "../store/slices/prodcuts.slice";
 
 const ProductDetail = () => {
@@ -24,9 +25,18 @@ const ProductDetail = () => {
   const productsSuggestions = products.filter(
     (index) => index.category.name == productId.category
   );
+   const [quantity, setQuantity]=useState( 0)
+   const addTocart=()=>{
+      const news={
+         id : productId.id,
+         quantity : Number(quantity)
+      }
+      dispatch(getToCartThunk(news))
 
-  console.log(productsSuggestions);
-  return (
+      setQuantity(0)
+   }
+
+    return (
     <div className="conteiner-product-detail">
       <section className="history">
         <Link to={"/"}>Home</Link>
@@ -39,28 +49,24 @@ const ProductDetail = () => {
         </figure>
         <div className="conteiner-info-datail">
           <h2>{productId.title}</h2>
-          <div class="product-description">
+          <div className="product-description">
             <p>{productId.description}</p>
             <div className="product-options">
-              <div class="flex">
-                <div class="price">
-                  <span class="label">Price</span> <br />
-                  <span class="amount">$ 1198.00</span>
+              <div className="flex">
+                <div className="price">
+                  <span className="label">Price</span> <br />
+                  <span className="amount">$ 1198.00</span>
                 </div>
-                <div class="quantity1">
-                  <div class="label">Quantity</div> 
-                  <div class="flex2">
-                    <button  className="min-max" disabled="">
-                       <p >min</p>
-                    </button>
-                    <div class="value">1</div>
-                    <button className="min-max ">
-                      <p >max</p>
-                    </button>
+                <div className="quantity1">
+                  <div className="label">Quantity</div> 
+                  <div className="flex2">
+                  
+                          <input onChange={(e)=> setQuantity(e.target.value)} value={quantity} class="value" type="number" /> 
+                    
                   </div>
                 </div>
               </div>
-              <button class="add-cart-button">
+              <button className="add-cart-button"  onClick={addTocart}>
                     Add to cart 
                      </button>
             </div>
@@ -95,31 +101,4 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-{
-  /* <div class="product-data">
-<div class="product-options">
-  <div class="flex">
-    <div class="price">
-      <span class="label">Price</span>
-      <span class="amount">$ 1198.00</span>
-    </div>
-    <div class="quantity">
-      <div class="label">Quantity</div>
-      <div class="flex">
-        <button disabled="">
-          <i class="icon-minus"></i>
-        </button>
-        <div class="value">1</div>
-        <button>
-          <i class="icon-plus"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-  <button class="add-cart-button">
-    Add to cart <i class="icon-shopping-cart"></i>
-  </button>
-</div>
-<p class="product-description">{pr.description}</p>
-</div> */
-}
+
